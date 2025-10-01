@@ -18,6 +18,9 @@ REPO=[your repo name on github]
 git clone git@github.com:$ORG/$REPO.git || true
 cp -r $REPO ./$REPO || true
 
-For example,
+For example, you can use the below if you were to clone and copy your repo
 
-git clone git@github.com:
+ORG=toxindex
+REPO=new_workflow_template
+git clone git@github.com:$ORG/$REPO.git || true
+cp -r $REPO ./$REPO || true
