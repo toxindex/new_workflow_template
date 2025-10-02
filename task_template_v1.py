@@ -10,11 +10,8 @@ Sections are annotated to highlight the main blocks you may customize:
 - Completion and error handling
 """
 
-import redis
-import json
 import os
 import uuid
-import logging
 import tempfile
 from workflows.celery_app import celery
 from webserver.model.message import MessageSchema
