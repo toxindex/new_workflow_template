@@ -4,7 +4,7 @@ This repository is a minimal template for implementing a custom Celery task that
 
 ### What this template includes
 - A starter Celery task in `task_template_v1.py` demonstrating:
-  - Receiving a payload with `task_id`, `user_id`, and a `payload` field
+  - Receiving a payload with `file_id` and `user_query` field
   - Emitting progress updates visible in the toxindex UI
   - Sending a chat-style message back to the task
   - Creating and uploading a Markdown result file to GCS and emitting it to the frontend

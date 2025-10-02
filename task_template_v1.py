@@ -13,17 +13,17 @@ from pathlib import Path
 from workflows.utils import emit_status, download_gcs_file_to_temp, upload_local_file_to_gcs, publish_to_celery_updates, publish_to_socketio, get_redis_connection, emit_task_file, emit_task_message
 # from toolname import yourtool
 
-
-@celery.task(bind=True, queue='[toolname]')
+@celery.task(bind=True, queue='toolname')
 def toolname(self, payload):
-    """GCS-enabled background task that emits progress messages and uploads files to GCS."""
-
-    
+    """emits progress messages and uploads files to GCS."""
     try:
         r = get_redis_connection()
         task_id = payload.get("task_id")
         user_id = payload.get("user_id")
-        file_id = payload.get("payload")
+
+        # currently supported inputs are file_id and user_query
+        file_id = payload.get("file_id")
+        user_query = payload.get("user_query")
 
         if not all([task_id, user_id]):
             raise ValueError(f"Missing required fields. task_id={task_id}, user_id={user_id}")
