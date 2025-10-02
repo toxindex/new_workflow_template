@@ -3,14 +3,14 @@
 This repository is a minimal template for implementing a custom Celery task that runs inside the toxindex.com workflow engine. Use it to adapt your own logic, tools, or model calls and submit a pull request to contribute your task.
 
 ### What this template includes
-- A starter Celery task in `celery_task_template.py` demonstrating:
+- A starter Celery task in `task_template_v1.py` demonstrating:
   - Receiving a payload with `task_id`, `user_id`, and a `payload` field
   - Emitting progress updates visible in the toxindex UI
   - Sending a chat-style message back to the task
   - Creating and uploading a Markdown result file to GCS and emitting it to the frontend
 
 ### File of interest
-- `celery_task_template.py`: Replace the placeholder logic with your implementation. The Celery task is defined as `toolname` and is queued on `queue='toolname'`. Rename this and the queue to match your tool name.
+- `task_template_v1.py`: Replace the placeholder logic with your implementation. The Celery task is defined as `toolname` and is queued on `queue='toolname'`. Rename this and the queue to match your tool name.
 
 ### How to implement your custom task
 1. Rename the task and queue
@@ -36,7 +36,7 @@ While the full toxindex stack provides the Celery app, models, and storage, you 
 
 ### Submission
 1. Fork or clone your repository containing your implementation.
-2. Copy your task code into this template structure, ensuring `celery_task_template.py` contains your adapted task.
+2. Copy your task code into this template structure, ensuring `task_template_v1.py` contains your adapted task.
 3. Open a Pull Request against our template repository with a clear description of your task and any runtime needs.
 
 ### Notes and tips
