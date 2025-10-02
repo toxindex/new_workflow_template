@@ -10,51 +10,16 @@ from webserver.model.task import Task
 from webserver.storage import GCSFileStorage
 from webserver.model.file import File
 from pathlib import Path
-from workflows.utils import emit_status, download_gcs_file_to_temp, upload_local_file_to_gcs, publish_to_celery_updates, publish_to_socketio, get_redis_connection
+from workflows.utils import emit_status, download_gcs_file_to_temp, upload_local_file_to_gcs, publish_to_celery_updates, publish_to_socketio, get_redis_connection, emit_task_file, emit_task_message
 # from toolname import yourtool
-
-logging.getLogger().info("celery_task_template.py module loaded")
-logger = logging.getLogger(__name__)
-
-def emit_task_message(task_id, message_data):
-    """Emit task message to both database and real-time channels"""
-    # Publish to celery_updates for database processing
-    publish_to_celery_updates("task_message", task_id, message_data)
-    
-    # Publish to Socket.IO for real-time updates
-    task = Task.get_task(task_id)
-    if task and getattr(task, 'session_id', None):
-        # Emit to chat session room
-        publish_to_socketio("new_message", f"chat_session_{task.session_id}", message_data)
-    
-    # Emit to task room
-    publish_to_socketio("task_message", f"task_{task_id}", {
-        "type": "task_message",
-        "data": message_data,
-        "task_id": str(task_id),  # Convert UUID to string for JSON serialization
-    })
-
-
-def emit_task_file(task_id, file_data):
-    """Emit task file to both database and real-time channels"""
-    # Publish to celery_updates for database processing
-    publish_to_celery_updates("task_file", task_id, file_data)
-    
-    # Publish to Socket.IO for real-time updates
-    publish_to_socketio("task_file", f"task_{task_id}", file_data)
-
 
 
 @celery.task(bind=True, queue='[toolname]')
 def toolname(self, payload):
     """GCS-enabled background task that emits progress messages and uploads files to GCS."""
-    # Add detailed task start logging
-    logger.info(f"=== TASK STARTED: [toolname] ===")
-    logger.info(f"Task ID: {self.request.id}")
-    logger.info(f"Payload: {payload}")
+
     
     try:
-        logger.info(f"Starting [toolname] task with payload: {payload}")
         r = get_redis_connection()
         task_id = payload.get("task_id")
         user_id = payload.get("user_id")
@@ -75,9 +40,7 @@ def toolname(self, payload):
             
             # Download input file from GCS
             input_path = download_gcs_file_to_temp(file_obj.filepath, temp_path)
-            logger.info(f"Downloaded GCS file {file_obj.filepath} to {input_path}")
 
-        logger.info(f"Processing task {task_id} for user {user_id}")
         emit_status(task_id, "starting")
 
         # THIS IS YOUR TEXT INPUT
@@ -108,7 +71,7 @@ def toolname(self, payload):
             # Upload Markdown file
             md_gcs_path = f"tasks/{task_id}/{md_filename}"
             gcs_storage.upload_file(temp_md_path, md_gcs_path, content_type='text/markdown')
-            emit_status(task_id, "files uploaded")
+            emit_status(task_id, "files uploaded") # send status to frontend
 
             # Emit Markdown file event
             md_file_data = {
@@ -118,21 +81,15 @@ def toolname(self, payload):
                 "file_type": "markdown",
                 "content_type": "text/markdown"
             }
-            emit_task_file(task_id, md_file_data)
+            emit_task_file(task_id, md_file_data) # send file to frontend
             
         finally:
             # Clean up temporary files
-            try:
-                os.unlink(temp_md_path)
-            except Exception as e:
-                logger.warning(f"Failed to clean up temp files: {e}")
-
-        logger.info(f"Task {task_id} completed successfully")
+            os.unlink(temp_md_path)
         finished_at = Task.mark_finished(task_id)
         emit_status(task_id, "done")
         return {"done": True, "finished_at": finished_at}
 
     except Exception as e:
-        logger.error(f"Error in probra_task: {str(e)}", exc_info=True)
         emit_status(task_id, "error")
         raise  # Re-raise the exception so Celery knows the task failed 
