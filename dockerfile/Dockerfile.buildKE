@@ -1,0 +1,10 @@
+FROM toxindex-base:latest
+
+# Core workflow files
+COPY build_KE/ /app/build_KE/
+USER root
+RUN pip install ./build_KE/
+
+# Entrypoint: Celery worker for rap tasks only
+CMD ["python", "-m", "celery", "-A", "build_KE.build_KE_celery", "worker", "--loglevel=info", "-Q", "build_KE"]
+

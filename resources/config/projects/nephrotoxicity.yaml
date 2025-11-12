@@ -1,0 +1,10 @@
+colors:
+  - "#FFFED0"
+  - "#FBDA80"
+  - "#F7B659"
+  - "#EE6033"
+  - "#D53D23"
+  - "#781A26"
+
+heatmap:
+  color_threshold: 4 

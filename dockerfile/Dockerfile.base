@@ -1,0 +1,54 @@
+# Base image with common dependencies
+FROM python:3.12-slim
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    gcc \
+    git \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set work directory
+WORKDIR /app
+
+# Copy workflow files
+COPY resources/workflows/__init__.py /app/workflows/__init__.py
+COPY resources/workflows/celery_app.py /app/workflows/celery_app.py
+COPY resources/workflows/celery_config.py /app/workflows/celery_config.py
+COPY resources/workflows/utils.py /app/workflows/utils.py
+# Core webserver files
+COPY resources/webserver/model/ /app/webserver/model/
+COPY resources/webserver/tools/ /app/webserver/tools/
+COPY resources/webserver/controller/ /app/webserver/controller/
+COPY resources/webserver/__init__.py /app/webserver/
+COPY resources/webserver/storage.py /app/webserver/
+COPY resources/webserver/cache_manager.py /app/webserver/
+COPY resources/webserver/ai_service.py /app/webserver/
+COPY resources/webserver/logging_utils.py /app/webserver/
+COPY resources/webserver/data_paths.py /app/webserver/
+COPY resources/webserver/datastore.py /app/webserver/
+COPY resources/webserver/socketio.py /app/webserver/
+
+# Copy config files
+COPY resources/config/ /app/config/
+
+# Install common Python dependencies
+RUN pip install --upgrade pip setuptools wheel
+
+# Create a non-root user
+RUN useradd --create-home --shell /bin/bash app \
+    && chown -R app:app /app
+
+# Switch to app user for application code
+USER app
+
+# Copy minimal requirements for probra only
+COPY requirements.txt /app/requirements.txt
+
+# Install general Python dependencies
+RUN pip install -r requirements.txt

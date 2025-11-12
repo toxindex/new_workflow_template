@@ -1,0 +1,16 @@
+colors:
+  - "#FFFED0"
+  - "#FBDA80"
+  - "#F7B659"
+  - "#EE6033"
+  - "#D53D23"
+  - "#781A26"
+  - "#4B1D3F"  # deep purple
+  - "#2E294E"  # indigo
+  - "#1B998B"  # teal
+  - "#2DCDDF"  # light blue
+  - "#F46036"  # orange
+  - "#A3A847"  # olive green
+
+heatmap:
+  color_threshold: 3 
