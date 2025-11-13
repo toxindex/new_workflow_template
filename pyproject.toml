@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "new_workflow_template"
+version = "0.1.0"
+description = "ToxIndex workflow template"
+requires-python = ">=3.11"
+dependencies = [
+    "celery",
+    "redis",
+    "requests",
+    "google-cloud-storage>=3.0.0",
+    "python-dotenv==1.1.0",
+    "psycopg2-binary==2.9.9",
+    "pandas",
+    "numpy",
+    "pydantic",
+    "sqlalchemy",
+    "psutil>=5.9.0",
+    "google-cloud-monitoring>=2.0.0",
+    "google-cloud-logging>=2.0.0",
+    "flask-login",
+    "Flask==3.0.0",
+    "Flask-SocketIO==5.3.6",
+    "Flask-WTF==1.2.1",
+    "markdown",
+    "sendgrid==6.10.0",
+    "annotated-types",
+    "flask-cors",
+    "stripe==4.2.0",
+    "gunicorn",
+    "gevent",
+    "gevent-websocket",
+    "email-validator==2.1.0.post1",
+    "urllib3==2.4.0",
+    "openai>=1.68.2,<2.0.0",
+    "langchain",
+    "langchain-openai",
+    "langchain-community",
+    "langchain-core",
+    "langchain-google-community",
+    "google-genai",
+    "langchain-google-genai",
+    "langgraph",
+    "agno==2.1.0",
+    "bs4",
+    "aiohttp",
+    "tenacity",
+    "httpx",
+    "duckduckgo-search",
+    "jsonschema",
+    "typing-extensions",
+    "idna",
+    "pubchempy",
+]
+
+[tool.setuptools]
+# Note: webserver, workflows, and config are provided by the shared base Docker image
+# They are not part of this repo's package structure
+# This repo only contains tool-specific packages (e.g., build_KE)
+packages = []
+

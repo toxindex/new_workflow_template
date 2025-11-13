@@ -1,0 +1,24 @@
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: celery-worker-buildke-vpa
+  namespace: toxindex-app
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: celery-worker-buildke
+  updatePolicy:
+    updateMode: "Auto"  # Automatically update resources to prevent OOM
+  resourcePolicy:
+    containerPolicies:
+    - containerName: celery-worker-buildke
+      minAllowed:
+        memory: "1Gi"
+        cpu: "500m"
+      maxAllowed:
+        memory: "16Gi"  # Maximum memory VPA can allocate (for large PDFs + Gemini 2.5 Pro + langchain)
+        cpu: "8000m"    # Maximum CPU VPA can allocate (for parallel processing)
+      controlledResources: ["cpu", "memory"]
+      controlledValues: RequestsAndLimits
+

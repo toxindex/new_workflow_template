@@ -1,0 +1,176 @@
+{
+  "path": "/home/kyu_insilica_co/new_workflow_template/build_KE/build_KE/archive/32439582.pdf",
+  "pmid": "32439582",
+  "key_events": [
+    {
+      "name": "Decreased FSH levels in blood",
+      "description": "A reduction in the circulating concentration of follicle-stimulating hormone, a key pituitary gonadotropin that regulates follicular growth.",
+      "event_type": "MIE",
+      "biological_level": "molecular",
+      "organ": null,
+      "id": "7abfded5-27e0-4af9-8c78-29f18869a6a7",
+      "reference": "32439582",
+      "pmid": "32439582"
+    },
+    {
+      "name": "Increased apoptosis of granulosa cells in ovary",
+      "description": "Increased programmed cell death of the somatic cells surrounding the oocyte, often due to withdrawal of essential survival signals like FSH.",
+      "event_type": "KE",
+      "biological_level": "cellular",
+      "organ": "Ovary",
+      "id": "20659aa6-0733-4c98-9d2f-f5d792619ec0",
+      "reference": "32439582",
+      "pmid": "32439582"
+    },
+    {
+      "name": "Increased follicular atresia in ovary",
+      "description": "The accelerated breakdown and reabsorption of ovarian follicles before maturation, leading to a depletion of the follicular pool.",
+      "event_type": "KE",
+      "biological_level": "tissue",
+      "organ": "Ovary",
+      "id": "454286a2-869b-4f15-a48f-167f8d174851",
+      "reference": "32439582",
+      "pmid": "32439582"
+    },
+    {
+      "name": "Necrosis of granulosa cells in ovary",
+      "description": "Unprogrammed death of somatic cells surrounding the oocyte within an ovarian follicle, caused by direct cellular injury or toxicity.",
+      "event_type": "KE",
+      "biological_level": "cellular",
+      "organ": "Ovary",
+      "id": "642e19bb-109d-4183-b9fa-d4f233ccbdc3",
+      "reference": "32439582",
+      "pmid": "32439582"
+    },
+    {
+      "name": "Decreased estradiol synthesis in ovary",
+      "description": "Reduction in the production of estradiol by the ovarian follicles, often resulting from damage to or loss of hormone-producing granulosa cells.",
+      "event_type": "KE",
+      "biological_level": "organ",
+      "organ": "Ovary",
+      "id": "a4f7bd7b-be52-4a6c-b32e-48b45efcf679",
+      "reference": "32439582",
+      "pmid": "32439582"
+    },
+    {
+      "name": "Increased menstrual cycle length",
+      "description": "An increase in the duration of the menstrual cycle beyond the typical range (oligomenorrhea), often due to a prolonged follicular phase caused by hormonal dysregulation.",
+      "event_type": "KE",
+      "biological_level": "organism",
+      "organ": null,
+      "id": "b9fca8f9-5f5d-4aed-b19d-002eaf56b60a",
+      "reference": "32439582",
+      "pmid": "32439582"
+    },
+    {
+      "name": "Reduced fertility",
+      "description": "A diminished capacity to conceive and produce offspring, which may be indicated by a longer time required to achieve pregnancy (subfertility).",
+      "event_type": "AO",
+      "biological_level": "organism",
+      "organ": null,
+      "id": "adb19f21-c0f2-4656-bddd-77ac3e2ad032",
+      "reference": "32439582",
+      "pmid": "32439582"
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "155248a9-2227-40c2-baaf-da01e53d967d",
+      "source_event_id": "7abfded5-27e0-4af9-8c78-29f18869a6a7",
+      "target_event_id": "20659aa6-0733-4c98-9d2f-f5d792619ec0",
+      "relationship_type": "leads_to",
+      "evidence_strength": 0.7,
+      "evidence_justification": "The article provides strong mechanistic plausibility for this relationship. The authors propose that the observed negative correlation between n-hexane/2,5-HD exposure and FSH levels (Figure 4) leads to increased apoptosis of granulosa cells. This is based on the well-established biological principle that FSH is a primary survival signal for these cells, and its withdrawal induces apoptosis. However, the study did not directly measure apoptosis in the exposed women; this downstream effect is inferred from the mechanism and supported by cited animal and in-vitro studies. The evidence is therefore a strong association with a clear mechanistic explanation, but not direct causal proof within the study population.",
+      "pmid": "32439582"
+    },
+    {
+      "relationship_id": "ade5fa43-00df-45fb-a2f9-a160a2e81c4c",
+      "source_event_id": "20659aa6-0733-4c98-9d2f-f5d792619ec0",
+      "target_event_id": "454286a2-869b-4f15-a48f-167f8d174851",
+      "relationship_type": "leads_to",
+      "evidence_strength": 0.9,
+      "evidence_justification": "The relationship between increased granulosa cell apoptosis and increased follicular atresia is a direct, mechanistic one, as follicular atresia is the process of follicle degeneration primarily driven by the apoptosis of its constituent granulosa cells. The article proposes this exact mechanism to explain its findings, stating, '...we propose that the FSH reduction exerted by 2,5-HD is causing an increased apoptosis in growing follicles at the ovaries from EG participants.' The authors support this by citing established biological principles that gonadotropic hormones like FSH are the primary endocrine factors regulating apoptosis in ovarian granulosa cells (Tilly et al., 1995; Hattori et al., 2018; Regan et al., 2018). Therefore, increased apoptosis of these cells is a direct cause of follicular atresia.",
+      "pmid": "32439582"
+    },
+    {
+      "relationship_id": "b827ea4f-53d2-4091-9ac5-a9a975e42fd8",
+      "source_event_id": "642e19bb-109d-4183-b9fa-d4f233ccbdc3",
+      "target_event_id": "454286a2-869b-4f15-a48f-167f8d174851",
+      "relationship_type": "leads_to",
+      "evidence_strength": 0.6,
+      "evidence_justification": "The article cites an in vitro study (Sun et al., 2012) which demonstrated that exposing human ovarian granulosa cells to 2,5-HD resulted in both necrosis and an increased number of atretic follicles. This provides strong evidence for a direct mechanistic link, as the death (necrosis) of granulosa cells would inherently cause the follicle to degrade and become atretic. The evidence is from a cited in vitro study, not the primary research of the provided article.",
+      "pmid": "32439582"
+    },
+    {
+      "relationship_id": "60f730bf-5521-4e78-a547-5db8b4ba1d48",
+      "source_event_id": "454286a2-869b-4f15-a48f-167f8d174851",
+      "target_event_id": "a4f7bd7b-be52-4a6c-b32e-48b45efcf679",
+      "relationship_type": "leads_to",
+      "evidence_strength": 0.7,
+      "evidence_justification": "The paper provides strong mechanistic plausibility for this relationship. Increased follicular atresia is characterized by apoptosis of granulosa cells. The paper cites in vitro studies where 2,5-HD (the metabolite of n-hexane) induced apoptosis in human ovarian granulosa cells (Sun et al., 2012) and animal studies showing an increase in apoptotic follicles (Zhang et al., 2013). Since granulosa cells are the primary site of estradiol synthesis within the follicle, their loss through apoptosis directly leads to decreased estradiol production. While the study itself only found a marginal, non-significant decrease in estradiol in a subgroup of exposed women (p=0.059), the underlying biological mechanism is well-established and supported by the experimental evidence cited.",
+      "pmid": "32439582"
+    },
+    {
+      "relationship_id": "1f960344-2e8e-4ee7-8866-701bb94b72e1",
+      "source_event_id": "a4f7bd7b-be52-4a6c-b32e-48b45efcf679",
+      "target_event_id": "b9fca8f9-5f5d-4aed-b19d-002eaf56b60a",
+      "relationship_type": "leads_to",
+      "evidence_strength": 0.4,
+      "evidence_justification": "The study presents suggestive evidence for this relationship. A trend towards lower estradiol levels was observed in a subgroup of exposed women with oligomenorrhea (p=0.059), which is biologically consistent with a prolonged follicular phase leading to longer menstrual cycles. However, the evidence is weakened because the statistical association is not strong and was only found in a small subgroup (smokers). The study design is cross-sectional, which does not establish a temporal sequence. The authors' primary mechanistic finding points to an association between n-hexane exposure and decreased FSH levels, making the role of decreased estradiol in causing the longer cycles less direct and more speculative based on the provided data.",
+      "pmid": "32439582"
+    },
+    {
+      "relationship_id": "07678550-a793-4cd8-ba99-76e00b9763ab",
+      "source_event_id": "b9fca8f9-5f5d-4aed-b19d-002eaf56b60a",
+      "target_event_id": "adb19f21-c0f2-4656-bddd-77ac3e2ad032",
+      "relationship_type": "leads_to",
+      "evidence_strength": 0.8,
+      "evidence_justification": "The article provides strong evidence for an association between increased menstrual cycle length and reduced fertility. A statistically significant positive correlation was found in the exposed group between 'time to get pregnant' and menstrual cycle length (r = 0.507, p = 0.010). The authors propose that the observed oligomenorrhea (long menstrual cycles) is a manifestation of anovulatory dysfunction, which is a common cause of subfertility. They state that 'a longer menstrual cycle could predict a longer time for getting pregnant in women exposed (classified as subfertility)'. This relationship is presented as mechanistically plausible and is supported by external literature cited in the discussion, which describes menstrual cycle length as a 'prognostic factor of subfertility'.",
+      "pmid": "32439582"
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "f02eb5b4-58d5-4dc8-b81d-fc2e8b8bee17",
+      "relationship_id": "155248a9-2227-40c2-baaf-da01e53d967d",
+      "source_id": "OPENALEX:32439582",
+      "reference": "32439582",
+      "pmid": "32439582"
+    },
+    {
+      "evidence_id": "64264f91-dbf0-441c-90bc-403d7fec3036",
+      "relationship_id": "ade5fa43-00df-45fb-a2f9-a160a2e81c4c",
+      "source_id": "OPENALEX:32439582",
+      "reference": "32439582",
+      "pmid": "32439582"
+    },
+    {
+      "evidence_id": "d1258341-73d5-449a-a771-3e8a1084c6fa",
+      "relationship_id": "b827ea4f-53d2-4091-9ac5-a9a975e42fd8",
+      "source_id": "OPENALEX:32439582",
+      "reference": "32439582",
+      "pmid": "32439582"
+    },
+    {
+      "evidence_id": "a059280d-a281-444f-b744-49c09d0c91fa",
+      "relationship_id": "60f730bf-5521-4e78-a547-5db8b4ba1d48",
+      "source_id": "OPENALEX:32439582",
+      "reference": "32439582",
+      "pmid": "32439582"
+    },
+    {
+      "evidence_id": "e9854bc7-af1a-465c-89c3-3b4627dda074",
+      "relationship_id": "1f960344-2e8e-4ee7-8866-701bb94b72e1",
+      "source_id": "OPENALEX:32439582",
+      "reference": "32439582",
+      "pmid": "32439582"
+    },
+    {
+      "evidence_id": "6a18e367-9b98-4e62-9d86-ed988ba0b536",
+      "relationship_id": "07678550-a793-4cd8-ba99-76e00b9763ab",
+      "source_id": "OPENALEX:32439582",
+      "reference": "32439582",
+      "pmid": "32439582"
+    }
+  ]
+}
